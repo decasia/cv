@@ -1,0 +1,109 @@
+
+%h1 Eli Thorkelson
+
+%h2 Contact Information
+
+%p
+  Department of Sociology and Social Anthropology
+  <br>Stellenbosch University
+  <br>Private Bag X1
+  <br>Matieland 7602, South Africa
+
+%p
+  Email: <a href="mailto:eli.thorkelson@gmail.com">eli.thorkelson@gmail.com</a>
+  <br>Web: <a href="http://decasia.org/">decasia.org</a>
+
+%h2 Employment
+
+%table
+  %tbody
+    - jobs.each do |item|
+      %tr
+        %td= "#{item.start}—#{item.end}"
+        %td= item.desc
+
+%h2 Education
+
+%table
+  %tbody
+    - education.each do |item|
+      %tr
+        %td= item.year
+        %td
+          :markdown
+            #{item.name}
+
+            #{item.project}
+
+            #{item.note}
+
+%h2 Honors
+
+%table
+  %tbody
+    - honors.each do |item|
+      %tr
+        %td= item.year
+        %td= item.desc
+
+%h2 Publications
+
+%table
+  %tbody
+    - publications.reject { |item| item.skip_web }.each do |item|
+      %tr
+        %td= item.year
+        %td
+          - if item.review
+            <b>Review</b> of #{item.review}.
+          - else
+            <b>#{item.name}.</b>
+
+          :markdown
+            #{item.desc}
+
+%h2 Presentations
+
+%table
+  %tbody
+    - presentations.each do |item|
+      %tr
+        %td= item.year
+        %td
+          “#{item.name}.” #{item.desc}
+
+%h2 Scholarly organization
+
+%table
+  %tbody
+    - organizing.each do |item|
+      %tr
+        %td= item.year
+        %td
+          :markdown
+            #{item.desc}
+
+%h2 Research experience
+
+%table
+  %tbody
+    - fieldwork.each do |item|
+      %tr
+        %td= item.year
+        %td= item.desc
+
+%h2 Languages
+
+%p
+  %em Human languages:
+  #{languages.join(', ')}.
+
+%p
+  %em Computer languages:
+  #{machine_languages.join(', ')}.
+
+%h2 Manuscript reviews
+
+%ul
+  - reviews.each do |item|
+    %li= item
