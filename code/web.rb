@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# invoke with ruby web.rb (from the script's directory)
+
 require 'tilt'
 require_relative 'cv_data'
 
