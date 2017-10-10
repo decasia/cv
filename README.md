@@ -41,11 +41,13 @@ The next stage of the project is to autogenerate PDFs that look nice and match t
 - Can embed Markdown for richer formatting in the YAML data.
 - If you maintain this over time, Git will give you a nice version of your academic history.
 
-## Nuisances and Disclaimers
+## Nuisances, Disclaimers, Todos
  
 - You have to quote YAML string values that contain colons, which means most article titles.
-- Not intended as production-ready code for mass deployment.
- 
+- Not intended as production-ready code for general use.
+- There are already about 25 other YAML CV projects on GitHub (largely in python) and they are all more general open source projects. This is just a couple of quick scripts that do exactly what I happen to want.
+- Imperfect separation of data and structure in `code/templates/web.haml`.
+
 ## Can I use this?
 
 You may want to get in touch if you want to use this project for yourself, as the current state of the repository (deliberately) mixes my personal data together with the code. The code is not specific to me and I'm happy to make it available open source if there is interest. But you would need to be comfortable with unix-like command line tools (i.e., Linux/OSX) to get anything out of this.
