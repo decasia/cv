@@ -17,7 +17,7 @@
 
 %table
   %tbody
-    - jobs.each do |item|
+    - employment.each do |item|
       %tr
         %td= "#{item.start}—#{item.end}"
         %td= item.desc
@@ -76,7 +76,7 @@
 
 %table
   %tbody
-    - organizing.each do |item|
+    - scholarly_organization.each do |item|
       %tr
         %td= item.year
         %td

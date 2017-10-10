@@ -1,20 +1,20 @@
 #!/usr/bin/env ruby
 
-# invoke with ruby web.rb (from the script's directory)
+# invoke with ruby web.rb
+# writes HTML content to STDOUT (pipe to a file if you like)
 
 require 'tilt'
 require_relative 'cv_data'
 
-OUTPUT_PATH = '../public/web-content.html'
+web_path = File.expand_path './templates/web.haml', File.dirname(__FILE__)
 
 # Load data
 data = CVData.new
+data.load
 
 # Render
-template = Tilt.new './templates/web.haml'
+template = Tilt.new web_path
 results = template.render data
 
-# Write
-File.write OUTPUT_PATH, results
-
-puts "Successfully wrote #{OUTPUT_PATH}."
+# Write to STDOUT
+puts results
