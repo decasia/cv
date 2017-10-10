@@ -13,7 +13,6 @@ DATA_PATH = File.expand_path('../data', File.dirname(__FILE__))
 # in (e.g.) templating code.
 
 class CVData < OpenStruct
-
   def load
     Dir.chdir DATA_PATH
     Dir["*.yml"].each do |name|
@@ -27,6 +26,7 @@ class CVData < OpenStruct
 
   protected
 
+  # makes an array of object hashes into an array of OpenStructs
   def structify(hash_list)
     hash_list.map do |item|
       OpenStruct.new(item)
