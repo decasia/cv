@@ -4,13 +4,13 @@
 # writes HTML content to STDOUT (pipe to a file if you like)
 
 require 'tilt'
-require_relative 'cv_data'
+require_relative 'yaml_data'
 
+data_path = File.expand_path('../data', File.dirname(__FILE__))
 web_path = File.expand_path './templates/web.haml', File.dirname(__FILE__)
 
 # Load data
-data = CVData.new
-data.load
+data = YAMLData.new(data_path)
 
 # Render
 template = Tilt.new web_path
