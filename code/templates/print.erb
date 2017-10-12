@@ -1,0 +1,183 @@
+\documentclass{memoir}
+\usepackage{url,hyperref,fontawesome,fontspec,longtable}
+\usepackage[letterpaper, margin=1in]{geometry}
+\pagestyle{plain}
+\begin{document}
+
+\setromanfont[Mapping={tex-text}]{Crimson Text}
+
+\newfontfamily{\title}{Julius Sans One}
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{minipage}[t]{0.5\textwidth}
+  \section*{\title\huge{Eli Thorkelson}}
+  \section*{\title\small{Sociology \& Social Anthropology \newline Stellenbosch University}}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\flushright{
+  \href{mailto:eli.thorkelson@gmail.com}{eli.thorkelson@gmail.com} \, \faEnvelope \\
+  \href{http://decasia.org/}{http://decasia.org/} \, \faGlobe \\
+  +27 63 013 0573 \, \faPhone \\
+
+  \rule{3cm}{0.1pt}
+
+  5 Nooitgedacht St. \\
+  Stellenbosch, 7600 \\
+  South Africa \\
+}
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Employment}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+<% employment.each do |item| %>
+
+<%= item.start %>-<%= item.end %>
+& <%= item.desc %> \\
+
+<% end %>
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Education}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% education.each do |item| %>
+
+<%= item.year %>
+& <%= item.name %>
+\newline <%= filter(item.project) %>
+<% if item.note %>
+\newline <%= item.note %>
+<% end %> \\
+
+<% end %>
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Honors}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+<% honors.each do |item| %>
+
+<%= item.year %>
+& <%= filter(item.desc) %> \\
+
+<% end %>
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Publications}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% publications.reject { |item| item.skip_web }.each do |item| %>
+
+<%= item.year %>
+& \textbf{<%= item.name %>}.
+<%= filter(item.desc) %> \\
+
+<% end %>
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Reviews}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% reviews.each do |item| %>
+
+<%= item.year %>
+& \textbf{<%= item.review %>}.
+<%= filter(item.desc) %> \\
+
+<% end %>
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Presentations}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% presentations.each do |item| %>
+
+<%= item.year %>
+& \textbf{<%= filter(item.name) %>}.
+<%= filter(item.desc) %> \\
+
+<% end %>
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Scholarly organization}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% scholarly_organization.each do |item| %>
+
+<%= item.year %>
+& <%= filter(item.desc) %> \\
+
+<% end %>
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Research experience}}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% fieldwork.each do |item| %>
+
+<%= item.year %>
+& <%= filter(item.desc) %> \\
+
+<% end %>
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{Human Languages}}
+
+<%= languages.join(', ') %>
+
+\section*{\title{Computer Languages}}
+
+<%= machine_languages.join(', ') %>.
+
+%%%%%%%%%%%%%%%%% end document %%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -34,6 +34,19 @@ The Ruby script at `code/web.rb` will spit out standardly-formatted HTML content
 
 The next stage of the project is to autogenerate PDFs that look nice and match the format of the HTML representation.
 
+### PDF processing requirements
+
+- xelatex
+- kramdown
+- FontAwesome (obscure LaTeX requirement)
+
+### Problems with intermediate formats
+
+- HTML to Tex conversion destroys table formatting if there are `<p>` tags within cells
+- Table formatting in Kramdown's extended Markdown doesn't support linebreaks within cells
+- If you make an ERB template to generate Tex, it has no tools by default to translate Markdown data to Tex markup
+- 
+
 ## Additional features
 
 - Flags to hide work in progress from the public CV (e.g. if you want to disclose to your institution your articles under review, but not the public).
