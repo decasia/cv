@@ -52,11 +52,19 @@
       %tr
         %td= item.year
         %td
-          - if item.review
-            <b>Review</b> of #{item.review}.
-          - else
-            <b>#{item.name}.</b>
+          <b>#{item.name}.</b>
+          :markdown
+            #{item.desc}
 
+%h2 Reviews
+
+%table
+  %tbody
+    - reviews.each do |item|
+      %tr
+        %td= item.year
+        %td
+          <b>#{item.review}</b>.
           :markdown
             #{item.desc}
 
@@ -99,9 +107,3 @@
 %p
   %em Computer languages:
   #{machine_languages.join(', ')}.
-
-%h2 Manuscript reviews
-
-%ul
-  - reviews.each do |item|
-    %li= item
