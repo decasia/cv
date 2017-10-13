@@ -8,8 +8,10 @@ require 'tilt'
 require 'kramdown'
 require_relative 'yaml_data'
 
-data_path = File.expand_path('../data', File.dirname(__FILE__))
+data_path = File.expand_path '../data', File.dirname(__FILE__)
 web_path = File.expand_path './templates/print.erb', File.dirname(__FILE__)
+output_dir = File.expand_path '../public', File.dirname(__FILE__)
+output_tex = File.join output_dir, "Thorkelson CV #{Date.today.iso8601}.tex"
 
 research_id = nil
 parser = OptionParser.new do |opts|
@@ -27,11 +29,20 @@ data = YAMLData.new(data_path)
 def data.filter(md) # wow, you can do this in ruby!
   Kramdown::Document.new(md).to_latex.strip
 end
-data[:research_id] = research_id
+data[:research_id] = research_id # select research interests
 
 # Render
 template = Tilt.new web_path
 results = template.render data, trim: true
 
-# Write to STDOUT
-puts results
+# Write to temp file
+
+temp_file = File.open output_tex, 'w'
+temp_file.write results
+temp_file.close
+
+# Invoke latex
+
+Dir.chdir output_dir
+puts "xelatex '#{output_tex}' --output-directory=#{output_dir}"
+exec "xelatex '#{output_tex}' --output-directory=#{output_dir}"
