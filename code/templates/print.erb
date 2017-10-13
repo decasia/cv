@@ -1,15 +1,18 @@
 \documentclass{memoir}
-\usepackage{url,hyperref,fontawesome,fontspec,longtable,color}
+\usepackage{url,hyperref,fontawesome,fontspec,longtable,color,parskip}
 \usepackage[letterpaper, margin=1in]{geometry}
 \pagestyle{plain}
 \begin{document}
-\sloppy
 
 \setromanfont[Ligatures=TeX]{Crimson Text}
 
 \newfontfamily{\title}{Julius Sans One}
+\newfontfamily{\details}{Letter Gothic Std}
 
 \renewcommand{\arraystretch}{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+
 
 \noindent
 \begin{minipage}[t]{0.5\textwidth}
@@ -22,7 +25,7 @@
   \title\small{Sociology \& Social Anthropology \newline Stellenbosch University}
 \end{minipage}
 \begin{minipage}[t]{0.5\textwidth}
-\raggedleft \href{mailto:eli.thorkelson@gmail.com}{eli.thorkelson@gmail.com} \, \faEnvelope \\
+\small{\raggedleft \href{mailto:eli.thorkelson@gmail.com}{eli.thorkelson@gmail.com} \, \faEnvelope \\
   \href{http://decasia.org/}{http://decasia.org/} \, \faGlobe \\
   (+27) 63 013 0573 \, \faPhone \\
 
@@ -30,8 +33,22 @@
 
   5 Nooitgedacht St. \\
   Stellenbosch, 7600 \\
-  South Africa \\
+  South Africa \\}
 \end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<% if research_id %>
+\section*{\title{Research Interests}}
+
+\raggedright
+\textit{Topics:} <%= research_interests[research_id]['topics'] %>
+
+\textit{Regions:} <%= research_interests[research_id]['regions'] %>
+
+\textit{Methods:} <%= research_interests[research_id]['methods'] %>
+<% end %>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -175,13 +192,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section*{\title{Human Languages}}
+\section*{\title{Languages}}
 
-<%= languages.join(', ') %>
+\textit{Human Languages}: <%= languages.join(', ') %>.
 
-\section*{\title{Computer Languages}}
-
-<%= machine_languages.join(', ') %>.
+\textit{Machine Languages}: <%= machine_languages.join(', ') %>.
 
 %%%%%%%%%%%%%%%%% end document %%%%%%%%%%%%%%%%%%
 

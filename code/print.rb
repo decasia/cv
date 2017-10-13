@@ -3,12 +3,21 @@
 # invoke with ruby print.rb
 # writes latex content to STDOUT (pipe to a file if you like)
 
+require 'optparse'
 require 'tilt'
 require 'kramdown'
 require_relative 'yaml_data'
 
 data_path = File.expand_path('../data', File.dirname(__FILE__))
 web_path = File.expand_path './templates/print.erb', File.dirname(__FILE__)
+
+research_id = nil
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: ruby print.rb [options]"
+  opts.on("-iINTEREST", "--interests=INTEREST", "Research interests to include") do |interest_id|
+    research_id = interest_id
+  end
+end.parse!
 
 # Load data
 data = YAMLData.new(data_path)
@@ -18,6 +27,7 @@ data = YAMLData.new(data_path)
 def data.filter(md) # wow, you can do this in ruby!
   Kramdown::Document.new(md).to_latex.strip
 end
+data[:research_id] = research_id
 
 # Render
 template = Tilt.new web_path
