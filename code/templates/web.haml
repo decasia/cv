@@ -42,11 +42,13 @@
     - honors.each do |item|
       %tr
         %td= item.year
-        %td= item.desc
+        %td
+          :markdown
+            #{item.desc}
 
 %h2 Publications
 
-%i Books and Edited Collections
+%h3 Books and Edited Collections
 
 %table
   %tbody
@@ -58,7 +60,7 @@
           :markdown
             #{item.desc}
 
-%i Articles and Book Chapters
+%h3 Articles and Book Chapters
 
 %table
   %tbody
@@ -70,7 +72,7 @@
           :markdown
             #{item.desc}
 
-%i Reviews
+%h3 Reviews
 
 %table
   %tbody
