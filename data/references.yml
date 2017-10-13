@@ -1,6 +1,10 @@
 ---
 
-- William Mazzarella, Department of Anthropology, University of Chicago
-- Davydd Greenwood, Department of Anthropology (Emeritus), Cornell University
-- Lauren Berlant, Department of English, University of Chicago
-- Jan Goldstein, Department of History, University of Chicago
+- name: William Mazzarella
+  position: Department of Anthropology, University of Chicago
+- name: Lauren Berlant
+  position: Department of English, University of Chicago
+- name: Jan Goldstein
+  position: Department of History, University of Chicago
+- name: Davydd Greenwood
+  position: Department of Anthropology (Emeritus), Cornell University

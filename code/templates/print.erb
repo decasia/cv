@@ -13,7 +13,6 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.3em}
 
-
 \noindent
 \begin{minipage}[t]{0.5\textwidth}
   \vspace*{6pt}
@@ -29,7 +28,7 @@
   \href{http://decasia.org/}{http://decasia.org/} \, \faGlobe \\
   (+27) 63 013 0573 \, \faPhone \\
 
-  \rule[4pt]{3cm}{0.1pt}
+  \rule[3pt]{3cm}{.2pt}
 
   5 Nooitgedacht St. \\
   Stellenbosch, 7600 \\
@@ -106,6 +105,24 @@
 
 \section*{\title{Publications}}
 
+\textit{Books and Edited Collections}
+
+\begin{longtable}{ p{.7in} p{5in} }
+
+<% books.each do |item| %>
+
+<%= item.year %>
+& \textbf{<%= item.name %>}.
+<%= filter(item.desc) %> \\
+
+<% end %>
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textit{Articles and Book Chapters}
+
 \begin{longtable}{ p{.7in} p{5in} }
 
 <% publications.reject { |item| item.skip_web }.each do |item| %>
@@ -118,11 +135,9 @@
 
 \end{longtable}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\section*{\title{Reviews}}
+\textit{Reviews}
 
 \begin{longtable}{ p{.7in} p{5in} }
 
@@ -197,6 +212,20 @@
 \textit{Human Languages}: <%= languages.join(', ') %>.
 
 \textit{Machine Languages}: <%= machine_languages.join(', ') %>.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{\title{References}}
+
+\begin{itemize}[---]
+
+<% references.each do |item| %>
+  \item <%= item.name %>, <%= item.position %>
+<% end %>
+
+\end{itemize}
 
 %%%%%%%%%%%%%%%%% end document %%%%%%%%%%%%%%%%%%
 
