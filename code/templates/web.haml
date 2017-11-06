@@ -58,7 +58,7 @@
         %td
           <b>#{item.name}.</b>
           :markdown
-            #{item.desc}
+            #{item.web_desc ? item.web_desc : item.desc}
 
 %h3 Articles and Book Chapters
 
